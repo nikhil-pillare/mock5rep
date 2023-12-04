@@ -4,15 +4,18 @@ const app= express();
 const mongoose= require("mongoose");
 
 const cors= require("cors");
+app.use(cors());
+app.use(express.json());
 const userRouter = require("./routes/User.Route")
 
 const connection = require("./config/db")
 require("dotenv").config();
 
-app.use(cors());
-app.use(express.json());
 
 
+app.use("/", (req,res)=>{
+  res.send("Welcome to Homepage")
+})
 app.use(userRouter)
 
 
