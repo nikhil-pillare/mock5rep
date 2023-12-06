@@ -16,7 +16,7 @@ require("dotenv").config();
 app.use("/", (req,res)=>{
   res.send("Welcome to Homepage")
 })
-app.use(userRouter)
+app.use("contact",userRouter)
 
 
 

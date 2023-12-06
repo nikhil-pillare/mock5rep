@@ -2,7 +2,7 @@ const express= require("express");
 const UserModel = require("../models/User.Model")
 const userRouter= express.Router();
 
-userRouter.get("/contact", async(req,res)=>{
+userRouter.get("/", async(req,res)=>{
     try {
         const users= await UserModel.find();
         res.status(200).json(users)
@@ -11,7 +11,7 @@ userRouter.get("/contact", async(req,res)=>{
     }
 })
 
-userRouter.post("/contact", async(req,res)=>{
+userRouter.post("/", async(req,res)=>{
     try {
         const newUser= await UserModel(req.body);
         await newUser.save()
