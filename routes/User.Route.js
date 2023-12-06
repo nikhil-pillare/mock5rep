@@ -15,7 +15,7 @@ userRouter.post("/", async(req,res)=>{
     try {
         const newUser= await UserModel(req.body);
         await newUser.save()
-        res.status(200).json(users)
+        res.status(200).json(newUser)
     } catch (error) {
         res.status(400).json(error)
     }
