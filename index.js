@@ -6,16 +6,16 @@ const mongoose= require("mongoose");
 const cors= require("cors");
 app.use(cors());
 app.use(express.json());
-const userRouter = require("./routes/User.Route")
 
+const userRouter = require("./routes/User.Route")
 const connection = require("./config/db")
 require("dotenv").config();
 
 
 
-app.use("/", (req,res)=>{
-  res.send("Welcome to Homepage")
-})
+// app.use("/", (req,res)=>{
+//   res.send("Welcome to Homepage here")
+// })
 app.use("/contact",userRouter)
 
 

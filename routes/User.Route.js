@@ -5,18 +5,24 @@ const userRouter= express.Router();
 userRouter.get("/", async(req,res)=>{
     try {
         const users= await UserModel.find();
-        res.status(200).json(users)
+        
+        
+        res.status(200).json({users})
     } catch (error) {
         res.status(400).json(error)
     }
 })
 
 userRouter.post("/", async(req,res)=>{
+    
     try {
         const newUser= await UserModel(req.body);
         await newUser.save()
+       
+        
         res.status(200).json(newUser)
     } catch (error) {
+        res.send("error in posting")
         res.status(400).json(error)
     }
 })
@@ -37,12 +43,14 @@ userRouter.patch("/:id", async(req, res)=>{
 
 userRouter.delete("/:id", async(req, res)=>{
     
+    const userId = req.params.id;
+    
+
     try {
-        const userId= req.params.id;
-        await UserModel.findByIdAndDelete(userId)
-        res.status(200).json({msg:"user Deleted"})
+        await UserModel.findByIdAndDelete(userId);
+        res.status(200).json({ msg: "User Deleted" });
     } catch (error) {
-        res.status(400).json(error)
+        res.status(400).json(error);
     }
 })
 
